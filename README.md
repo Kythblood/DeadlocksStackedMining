@@ -19,9 +19,9 @@ Don't you find it annoying that you have to mine ores, transport them with count
 *   The second reason besides convenience why I created this mod is that it saves you UPS, meaning your game can run faster.
 *   Setup: 30000 Miners with speed modules and Mining Productivity 50
 *   Test 1: 140 UPS   Normal mining, direct insertion with beltboxes  
-![alt text](https://i.imgur.com/jXL3SoF.jpg "Normal mining, direct insertion with beltboxes")
+![alt text](https://i.imgur.com/xSNJSVT.jpg "140 UPS with 30000 miners total with this setup")
 *   Test 2: 155 UPS   Normal mining, direct insertion without beltboxes  
-![alt text](https://i.imgur.com/jJEcrsU.jpg "Normal mining, direct insertion with beltboxes")
+![alt text](https://i.imgur.com/AALtl9E.jpg "155 UPS with 30000 miners total with this setup")
 *   Test 3: 280 UPS   Exact same setup as test 2 but with Stacked Mining
 *   If belts are used to transport the ore to the beltboxes (like you would in most cases during normal game-play) then the UPS improvement can be over 400% and more with high stack size settings, depending on the distance of the belts, because you reduce the number of entities you need to get the same output of stacked ore drastically.
 *   Another advantage of mining stacked ore is that in factorio the items / second is capped at 60 (max 1 craft per tick). With high levels of mining productivity research you would eventually reach a cap (especially if you play with modded miners/modules). With stacked ore mining it takes a LOT longer to reach this cap.
