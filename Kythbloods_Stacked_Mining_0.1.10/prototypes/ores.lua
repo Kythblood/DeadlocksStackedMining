@@ -33,6 +33,7 @@ local function createStackedVersion(name)
     end
 end
 
+
 -- create a stacked version of the ResourceEntity with the given oreName
 local function createStackedOre(oreName)
 
@@ -103,18 +104,73 @@ local function createStackedOre(oreName)
 	return ore
 end
 
+
+-- create a high pressure version of the ResourceEntity with the given fluidName (Support for Pressurized fluids)
+local function createCompressedFluidResource(fluidName)
+
+    local compressedName = "high-pressure-" .. fluidName
+    local fluidResource = table.deepcopy(data.raw["resource"][fluidName])
+
+    -- generate a dynamic localized name for the stacked version of the ore
+    fluidResource.localised_name = {"entity-name.high-pressure-fluid-resource",{"entity-name." .. fluidName}}
+
+
+    -- replace the mining result with the high pressure version
+    if fluidResource.minable.results then
+        
+        if fluidResource.minable.results[1].name then
+            fluidResource.minable.results[1].name = "high-pressure-" .. fluidResource.minable.results[1].name
+        elseif fluidResource.minable.results[1][1] then
+            fluidResource.minable.results[1][1] = "high-pressure-" .. fluidResource.minable.results[1][1]
+        end
+    elseif ore.minable.result then        
+        if fluidResource.minable.result.name then
+            fluidResource.minable.result.name = "high-pressure-" .. fluidResource.minable.result.name
+        elseif fluidResource.minable.result[1] then
+            fluidResource.minable.result[1] = "high-pressure-" .. fluidResource.minable.result[1]
+        end
+    end
+
+    fluidResource.name = compressedName
+
+    -- adjust the mining time (to keep it the same overall)
+    fluidResource.minable.mining_time = fluidResource.minable.mining_time * getSettingValue("fluid-compression-rate")
+
+    -- the ResourceEntity should never occur naturally
+    fluidResource.autoplace = nil
+    
+    -- if the ResourceEntity is infinite, increase the infinite_depletion_amount accordingly
+    if fluidResource.infinite then 
+        fluidResource.infinite_depletion_amount = (fluidResource.infinite_depletion_amount or 1) * getSettingValue("fluid-compression-rate")
+    end
+
+	return fluidResource
+end
+
 ---------------------------------------------------------------------------------------------------
 
 -- try to create stacked versions for all resources in the resource table
 local resourceTable = {}
 for _, resource in pairs(data.raw["resource"]) do
-    if resource.category == nil or resource.category == "basic-solid" or resource.category == "kr-quarry" then   
+
+    if resource.category == nil or resource.category == "basic-solid" or resource.category == "kr-quarry" then 
+
         -- check if nil because in that case at the end of the data stage the value would be set to the default, which is "basic-solid"
         table.insert(resourceTable, createStackedOre(resource.name))
         log("Sucessfully created the ResourceEntity for the stacked ore version of " .. resource.name)
+
     elseif resource.category == "basic-fluid" then
-        -- to-do: Support for Pressurized fluids for resource of the category basic-fluid like oil etc.
-        log("The resource " .. resource.name .. " is of the category basic-fluid and therefore skipped. Support for Pressurized fluids is planned (hopefully coming soon)")
+
+        -- Support for Pressurized fluids
+        if mods["CompressedFluids"] then
+            -- check if a high pressure version fluid exists that corresponds to the mining result of a resource 
+            if (resource.minable.result and (data.raw.fluid["high-pressure-" .. (resource.minable.result.name or resource.minable.result[1]) ] )) or
+               (resource.minable.results and (data.raw.fluid["high-pressure-" .. (resource.minable.results[1].name or resource.minable.results[1][1]) ] )) then
+
+                table.insert(resourceTable, createCompressedFluidResource(resource.name))
+                log("Sucessfully created the ResourceEntity for the high pressure version of " .. resource.name)
+            end
+        end
     else 
         log("Skipping the resource " .. resource.name .. " because it is neither basic-solid, kr-quarry nor basic-fluid. Feel free to contact the mod author if you feel like the resource " .. resource.name .. " should be supported")
     end

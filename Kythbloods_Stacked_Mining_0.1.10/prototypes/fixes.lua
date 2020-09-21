@@ -1,11 +1,14 @@
 -- todo: fix old ore icons showing in Mining Depot for the recipes even if a mod like Deadlock Stacking for Vanilla is installed
 
--- todo: make sure that, should custom stacked icons exist, they are also used for items in case the support mod only adds the stacking support in data-final-fixes
+-- todo: make sure that, should custom stacked icons exist, they are also used for items even in case the support mod only adds the stacking support in data-final-fixes
 
 -- todo: option to keep the sprites the same even for lower ore counts
     -- which variation of an animation is used for a resource depends on the amount of a resourceEntity
     -- because this mod loweres the amount when converting an ore to a stacked ore other variations get used
     -- this option would modify stage_counts to keep the variation of the animation the same
+
+-- todo: option to add an high pressure offshore pump + option to change 
+
 
 
 -- fix to make sure that the fluid_amount for angels infinite resources was correctly modified

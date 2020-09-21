@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.10
+Date: 21.09.2020
+  Changes:
+    - Added compatibility for Pressurized fluids
+    - Resources of the category "basic-fluid" (like crude oil) can be marked to be extracted as their high-pressure version
+        - Similar to ores, the mining time and the depletion amount (how much the field's yield is decreased each cycle)
+          for those marked resources are adjusted depending on the fluid compression rate selected in the settings of 
+          Pressurized fluids
+    - Temporary marked the mod Cursed Filter Mining Drill as incompatible
+---------------------------------------------------------------------------------------------------
 Version: 0.1.9
 Date: 19.09.2020
   Changes:

@@ -14,11 +14,18 @@ else
     stackSize =  tonumber(getSettingValue("kyth-overwrite-deadlock-stack-size"))
 end
 
+local compressionRate = getSettingValue("fluid-compression-rate")
+
 ---------------------------------------------------------------------------------------------------
 
 local function isOreStacked(entity)
     -- string.find returns 1 if the name starts with "stacked-" (for position)
-    return string.find(entity.name, "stacked-") == 1
+    return string.find(entity.name, "stacked%-") == 1
+end
+
+local function isFluidResourceCompressed(entity)
+    -- string.find returns 1 if the name starts with "stacked-" (for position)
+    return string.find(entity.name, "high%-pressure%-") == 1
 end
 
 local function convertEntity(entity, newName, convertToStacked)
@@ -53,8 +60,11 @@ local function markOres(player, entities)
 					if not isOreStacked(entity) then
 						convertEntity(entity, "stacked-" .. entity.name, true)
 					end
-                elseif game.entity_prototypes[entity.name].resource_category == "basic-fluid" then
-                    -- to-do: else for fluids like oil, supporting pressurized fluids
+                elseif game.entity_prototypes[entity.name].resource_category == "basic-fluid" and game.active_mods["CompressedFluids"] then
+                    -- Support for Pressurized fluids
+                    if not isFluidResourceCompressed(entity) then
+						convertEntity(entity, "high-pressure-" .. entity.name, true)
+					end
                 end 
 			end	
 		else
@@ -71,8 +81,11 @@ local function unmarkOres(player, entities)
 					if isOreStacked(entity) then
 						convertEntity(entity, string.gsub(entity.name, "stacked%-", ""), false)
 					end
-				elseif game.entity_prototypes[entity.name].resource_category == "basic-fluid" then
-                -- to-do: else for fluids like oil, supporting pressurized fluids
+				elseif game.entity_prototypes[entity.name].resource_category == "basic-fluid" and game.active_mods["CompressedFluids"] then
+                    -- Support for Pressurized fluids
+                    if isFluidResourceCompressed(entity) then
+                        convertEntity(entity, string.gsub(entity.name, "high%-pressure%-", ""), false)
+                    end
                 end 
 			end	
 		else
