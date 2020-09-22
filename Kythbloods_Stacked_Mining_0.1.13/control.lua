@@ -34,7 +34,7 @@ local function convertEntity(entity, newName, convertToStacked)
 	local newForce = entity.force
     local newAmount = entity.amount
     -- only change the amount for non infinite resources
-    if entity.initial_amount == nil then
+    if not game.entity_prototypes[entity.name].infinite_resource then
         if convertToStacked then
             newAmount = math.ceil(entity.amount/stackSize)
         else
@@ -59,12 +59,22 @@ local function markOres(player, entities)
                 if game.entity_prototypes[entity.name].resource_category == "basic-solid" or game.entity_prototypes[entity.name].resource_category == "kr-quarry" then
 					if not isOreStacked(entity) then
 						convertEntity(entity, "stacked-" .. entity.name, true)
-					end
-                elseif game.entity_prototypes[entity.name].resource_category == "basic-fluid" and game.active_mods["CompressedFluids"] then
-                    -- Support for Pressurized fluids
+                    end
+                -- Support for Pressurized fluids
+                elseif game.active_mods["CompressedFluids"] and (game.entity_prototypes[entity.name].resource_category == "basic-fluid" or game.entity_prototypes[entity.name].resource_category == "oil" or game.entity_prototypes[entity.name].resource_category == "angels-fissure") then
                     if not isFluidResourceCompressed(entity) then
 						convertEntity(entity, "high-pressure-" .. entity.name, true)
+                    end
+                -- Support for Cursed Filter Mining Drill   
+                elseif game.active_mods["Cursed-FMD"] and game.entity_prototypes[entity.name] and game.entity_prototypes[entity.name].mineable_properties.products[1].type == "item" and game.entity_prototypes[entity.name].resource_category == entity.name then
+                    if not isOreStacked(entity) then
+						convertEntity(entity, "stacked-" .. entity.name, true)
 					end
+                -- Support for Cursed Filter Mining Drill
+                elseif game.active_mods["Cursed-FMD"] and game.active_mods["CompressedFluids"] and game.entity_prototypes[entity.name] and game.entity_prototypes[entity.name].mineable_properties.products[1].type == "fluid" and game.entity_prototypes[entity.name].resource_category == entity.name then
+                    if not isFluidResourceCompressed(entity) then
+						convertEntity(entity, "high-pressure-" .. entity.name, true)
+                    end
                 end 
 			end	
 		else
@@ -80,9 +90,19 @@ local function unmarkOres(player, entities)
 				if game.entity_prototypes[entity.name].resource_category == "basic-solid" or game.entity_prototypes[entity.name].resource_category == "kr-quarry" then
 					if isOreStacked(entity) then
 						convertEntity(entity, string.gsub(entity.name, "stacked%-", ""), false)
-					end
-				elseif game.entity_prototypes[entity.name].resource_category == "basic-fluid" and game.active_mods["CompressedFluids"] then
-                    -- Support for Pressurized fluids
+                    end
+                -- Support for Pressurized fluids
+				elseif game.active_mods["CompressedFluids"] and (game.entity_prototypes[entity.name].resource_category == "basic-fluid" or game.entity_prototypes[entity.name].resource_category == "oil" or game.entity_prototypes[entity.name].resource_category == "angels-fissure") then
+                    if isFluidResourceCompressed(entity) then
+                        convertEntity(entity, string.gsub(entity.name, "high%-pressure%-", ""), false)
+                    end
+                -- Support for Cursed Filter Mining Drill
+                elseif game.active_mods["Cursed-FMD"] and game.entity_prototypes[entity.name] and game.entity_prototypes[entity.name].mineable_properties.products[1].type == "item" and game.entity_prototypes[entity.name].resource_category == entity.name then
+                    if isOreStacked(entity) then
+						convertEntity(entity, string.gsub(entity.name, "stacked%-", ""), false)
+                    end
+                -- Support for Cursed Filter Mining Drill
+                elseif game.active_mods["Cursed-FMD"] and game.active_mods["CompressedFluids"] and game.entity_prototypes[entity.name] and game.entity_prototypes[entity.name].mineable_properties.products[1].type == "fluid" and game.entity_prototypes[entity.name].resource_category == entity.name then
                     if isFluidResourceCompressed(entity) then
                         convertEntity(entity, string.gsub(entity.name, "high%-pressure%-", ""), false)
                     end

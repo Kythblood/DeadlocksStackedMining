@@ -1,10 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.13
+Date: 22.09.2020
+  Features:
+    - Patch for Mining Drones
+        - Fixed that outdated ore icons are used for the mining recipes of stacked ores in Mining Depots, even if a mod like 
+          Deadlock Stacking for Vanilla is installed (highly recommended)
+        - Change to the order of the recipes in Mining Depots, normal ores and their stacked version are now next to each other
+    - Added support for Angel's Fissures
+  Bugfixes:
+    - Fixed incompatibility with Cursed Filter Mining Drill
+    - Fixed issues with Crude Oil when the option to make it finite was enabled in Krastorio 2
+    - Fixed a crash that occured when selecting an Angel's Fissure with the mod Cursed Filter Mining Drill enabled
+---------------------------------------------------------------------------------------------------
 Version: 0.1.12
 Date: 21.09.2020
   Bugfixes:
     - Fixed a crash
 ---------------------------------------------------------------------------------------------------
-Version: 0.1.11
+Version: 0.1.12
 Date: 21.09.2020
   Features:
     - Added an option to add a High pressure offshore pump

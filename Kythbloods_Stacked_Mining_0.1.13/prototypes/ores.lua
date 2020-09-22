@@ -158,18 +158,15 @@ for _, resource in pairs(data.raw["resource"]) do
         -- check if nil because in that case at the end of the data stage the value would be set to the default, which is "basic-solid"
         table.insert(resourceTable, createStackedOre(resource.name))
         log("Sucessfully created the ResourceEntity for the stacked ore version of " .. resource.name)
+    
+    -- Support for Pressurized fluids
+    elseif mods["CompressedFluids"] and (resource.category == "basic-fluid" or resource.category == "oil" or resource.category == "angels-fissure") then
+        -- check if a high pressure version fluid exists that corresponds to the mining result of a resource 
+        if (resource.minable.result and (data.raw.fluid["high-pressure-" .. (resource.minable.result.name or resource.minable.result[1]) ] )) or
+           (resource.minable.results and (data.raw.fluid["high-pressure-" .. (resource.minable.results[1].name or resource.minable.results[1][1]) ] )) then
 
-    elseif resource.category == "basic-fluid" then
-
-        -- Support for Pressurized fluids
-        if mods["CompressedFluids"] then
-            -- check if a high pressure version fluid exists that corresponds to the mining result of a resource 
-            if (resource.minable.result and (data.raw.fluid["high-pressure-" .. (resource.minable.result.name or resource.minable.result[1]) ] )) or
-               (resource.minable.results and (data.raw.fluid["high-pressure-" .. (resource.minable.results[1].name or resource.minable.results[1][1]) ] )) then
-
-                table.insert(resourceTable, createCompressedFluidResource(resource.name))
-                log("Sucessfully created the ResourceEntity for the high pressure version of " .. resource.name)
-            end
+            table.insert(resourceTable, createCompressedFluidResource(resource.name))
+            log("Sucessfully created the ResourceEntity for the high pressure version of " .. resource.name)
         end
     else 
         log("Skipping the resource " .. resource.name .. " because it is neither basic-solid, kr-quarry nor basic-fluid. Feel free to contact the mod author if you feel like the resource " .. resource.name .. " should be supported")
