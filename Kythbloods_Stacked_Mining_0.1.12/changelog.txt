@@ -1,4 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.12
+Date: 21.09.2020
+  Bugfixes:
+    - Fixed a crash
+---------------------------------------------------------------------------------------------------
+Version: 0.1.11
+Date: 21.09.2020
+  Features:
+    - Added an option to add a High pressure offshore pump
+        - Outputs High-pressurized water directly, but at a lower rate than a normal offshore pump.
+        - The pressurized output/second is adjusted automatically depending on the fluid compression rate selected in the 
+          settings of Pressurized fluids, meaning the (uncompressed) output/second stays the same overall.
+    - If FactorioExtended-Plus Transport is enabled a High pressure offshore pump Mk2 is added
+---------------------------------------------------------------------------------------------------
 Version: 0.1.10
 Date: 21.09.2020
   Changes:

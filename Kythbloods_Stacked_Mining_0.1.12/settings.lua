@@ -20,5 +20,13 @@ data:extend(
 			"100",
 			"128"
         }
-    }
+    },
+    {
+        type = "bool-setting",
+        name = "kyth-high-pressure-offshore-pump",
+        setting_type = "startup",
+        default_value = true,
+        order = "b"
+    },
+    
 })

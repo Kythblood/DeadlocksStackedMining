@@ -1,6 +1,6 @@
 {
     "name": "Kythbloods_Stacked_Mining",
-    "version": "0.1.10",
+    "version": "0.1.12",
     "factorio_version": "1.0",
     "title": "Deadlock's Stacked Mining",
     "author": "Kythblood",
@@ -8,6 +8,8 @@
         "base >= 1.0.0",
         "deadlock-beltboxes-loaders >= 2.3.0",
         "? angelsinfiniteores",
+        "? CompressedFluids",
+        "? FactorioExtended-Plus-Transport",
         "! Cursed-FMD"
     ],
     "description": "Adds a mining planner that allows you to mark ores to be mined directly as their stacked version."
