@@ -15,6 +15,20 @@ Don't you find it annoying that you have to mine ores, transport them with count
 *   To destroy the Stacked mining planner item in your inventory, drop it on the ground and it will disappear.
 *   Increases the fluid capacity of miners if required depending on the selected stack size in the settings to (see changelog).
 
+# Known Issues
+*   Once you have researched the Stacked mining planner for the first time, it stacks unlocked. That is because the unlock status of shortcuts is stored in player-data.json, and is thus persistent across all save-games.
+*   If you notice some debug code in your factorio-current.log, just ignore it. It has no influence on the game. It will be removed as soon as I am sure that the mod runs without any bugs.
+# Mod support & Compatibility
+*   Compatible with Mining Drones and should work with all other mods that add higher tier / different miners 
+*   Support for all modded ores (resources of the category "basic-solid") and Imersite from Krastorio 2.
+*   Support for [Pressurized fluids](https://mods.factorio.com/mod/CompressedFluids). Resources of the category "basic-fluid" can be marked for high pressure extraction.
+The mining time and the depletion amount (how much the field's yield is decreased each cycle) are adjusted based on the fluid compression rate selected in the settings of Pressurized fluids.
+*   Tested for Krastorio 2, Bob's Ores and Angel's Refining. Let me know if you come across any bugs/issues.
+*   A stacked version of all mining results of the modded ores is created even if no add-on is installed that adds support for these ores, meaning this mod can be used without any other add-on that adds stacking support for the respective mods.
+They work perfectly fine. However, this mod uses a function from [Deadlock's Stacking Beltboxes & Compact Loaders](https://mods.factorio.com/mod/deadlock-beltboxes-loaders) to generate the icons and does not include any stacked icons, because the graphics of some mods might be protected by a license. Use other add-ons that add support including graphics for the respective mods to improve performance.
+![alt text](https://i.imgur.com/tuBhn4I.jpg "Krastorio 2 Rare Metals & Bobs Ores, with electric mining drill 2 and 3")
+
+
 # UPS
 *   The second reason besides convenience why I created this mod is that it saves you UPS, meaning your game can run faster.
 *   Setup: 30000 Miners with speed modules and Mining Productivity 50
@@ -25,18 +39,6 @@ Don't you find it annoying that you have to mine ores, transport them with count
 *   Test 3: 280 UPS   Exact same setup as test 2 but with Stacked Mining
 *   If belts are used to transport the ore to the beltboxes (like you would in most cases during normal game-play) then the UPS improvement can be over 400% and more with high stack size settings, depending on the distance of the belts, because you reduce the number of entities you need to get the same output of stacked ore drastically.
 *   Another advantage of mining stacked ore is that in factorio the items / second is capped at 60 (max 1 craft per tick). With high levels of mining productivity research you would eventually reach a cap (especially if you play with modded miners/modules). With stacked ore mining it takes a LOT longer to reach this cap.
-
-# Known Issues
-*   Once you have researched the Stacked mining planner for the first time, it stacks unlocked. That is because the unlock status of shortcuts is stored in player-data.json, and is thus persistent across all save-games.
-*   If you notice some debug code in your factorio-current.log, just ignore it. It has no influence on the game. It will be removed as soon as I am sure that the mod runs without any bugs.
-# Mod support & Compatibility
-*   Compatible with Mining Drones and should work with all other mods that add higher tier / different miners 
-*   Support for all modded ores (resources of the category "basic-solid") and Imersite from Krastorio 2.
-*   Tested for Krastorio 2, Bob's Ores and Angel's Refining. Let me know if you come across any bugs/issues.
-*   A stacked version of all mining results of the modded ores is created even if no add-on is installed that adds support for these ores, meaning this mod can be used without any other add-on that adds stacking support for the respective mods.
-They work perfectly fine. However, this mod uses a function from [Deadlock's Stacking Beltboxes & Compact Loaders](https://mods.factorio.com/mod/deadlock-beltboxes-loaders) to generate the icons and does not include any stacked icons, because the graphics of some mods might be protected by a license. Use other add-ons that add support including graphics for the respective mods to improve performance.
-![alt text](https://i.imgur.com/tuBhn4I.jpg "Krastorio 2 Rare Metals & Bobs Ores, with electric mining drill 2 and 3")
-
 
 # Credits
 This mod is an add-on for [Deadlock's Stacking Beltboxes & Compact Loaders](https://mods.factorio.com/mod/deadlock-beltboxes-loaders) by [shanemadden](https://mods.factorio.com/user/shanemadden) and [Deadlock](https://mods.factorio.com/user/deadlock989). It is not related to Deadlock in any other way.
