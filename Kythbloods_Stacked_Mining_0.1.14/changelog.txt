@@ -1,8 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.14
+Date: 23.09.2020
+  Features:
+    - Added an option to adjust the graphics of ores:
+        - If enabled, the "stage_counts" of ores that are marked for stacked mining are changed in such a way that the same 
+          graphics are used as before they were marked
+        - "stage_counts" is a list of values that define which stage of the animation is used depending on the amount of an 
+          ore patch
+        - Leaving this setting disabled makes it easier to distinguish between normal ore and ore marked for stacked mining, 
+          because of the change of the graphics. However, ore patches with a low amount of ore can look quite barren
+        - default: disabled
+  Changes:
+    - Added GENERAL-LICENSE.txt and CREDITS.txt
+    - Renamed "Stacked mining planner" to "Resource compression planner"
+    - With Mining Drones enabled, the recipes for mining stacked ores in Mining Depots are now sorted into their own subgroup
+    - Temporary marked the mod Cursed Filter Mining Drill again as incompatible
+---------------------------------------------------------------------------------------------------
 Version: 0.1.13
 Date: 22.09.2020
   Features:
-    - Patch for Mining Drones
+    - Changes with Mining Drones:
         - Fixed that outdated ore icons are used for the mining recipes of stacked ores in Mining Depots, even if a mod like 
           Deadlock Stacking for Vanilla is installed (highly recommended)
         - Change to the order of the recipes in Mining Depots, normal ores and their stacked version are now next to each other
@@ -20,17 +37,17 @@ Date: 21.09.2020
 Version: 0.1.12
 Date: 21.09.2020
   Features:
-    - Added an option to add a High pressure offshore pump
-        - Outputs High-pressurized water directly, but at a lower rate than a normal offshore pump.
+    - Added an option to add a High pressure offshore pump:
+        - Outputs High-pressurized water directly, but at a lower rate than a normal offshore pump
         - The pressurized output/second is adjusted automatically depending on the fluid compression rate selected in the 
-          settings of Pressurized fluids, meaning the (uncompressed) output/second stays the same overall.
+          settings of Pressurized fluids, meaning the (uncompressed) output/second stays the same overall
     - If FactorioExtended-Plus Transport is enabled a High pressure offshore pump Mk2 is added
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.10
 Date: 21.09.2020
   Changes:
     - Added compatibility for Pressurized fluids
-    - Resources of the category "basic-fluid" (like crude oil) can be marked to be extracted as their high-pressure version
+    - Resources of the category "basic-fluid" (like crude oil) can be marked to be extracted as their high-pressure version:
         - Similar to ores, the mining time and the depletion amount (how much the field's yield is decreased each cycle)
           for those marked resources are adjusted depending on the fluid compression rate selected in the settings of 
           Pressurized fluids

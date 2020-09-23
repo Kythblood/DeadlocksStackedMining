@@ -101,6 +101,13 @@ local function createStackedOre(oreName)
         ore.infinite_depletion_amount = (ore.infinite_depletion_amount or 1) * stackSize
     end
 
+    -- option in the settings to adjust the graphics of ores
+    if getSettingValue("kyth-adjust-stage-counts") and ore.stage_counts then 
+        for i, stage in ipairs(ore.stage_counts) do
+            ore.stage_counts[i] = math.ceil(stage / stackSize)
+        end
+    end
+
 	return ore
 end
 

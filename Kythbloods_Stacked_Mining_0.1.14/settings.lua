@@ -28,5 +28,12 @@ data:extend(
         default_value = true,
         order = "b"
     },
+    {
+        type = "bool-setting",
+        name = "kyth-adjust-stage-counts",
+        setting_type = "startup",
+        default_value = false,
+        order = "c"
+    },
     
 })

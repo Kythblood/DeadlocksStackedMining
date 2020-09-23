@@ -1,6 +1,6 @@
 {
     "name": "Kythbloods_Stacked_Mining",
-    "version": "0.1.13",
+    "version": "0.1.14",
     "factorio_version": "1.0",
     "title": "Deadlock's Stacked Mining",
     "author": "Kythblood",
@@ -9,7 +9,8 @@
         "deadlock-beltboxes-loaders >= 2.3.0",
         "? angelsinfiniteores",
         "? CompressedFluids",
-        "? FactorioExtended-Plus-Transport"
+        "? FactorioExtended-Plus-Transport",
+        "! Cursed-FMD"
     ],
     "description": "Adds a mining planner that allows you to mark ores to be mined directly as their stacked version.\nWith Compressed Fluids installed, resources can also be marked to be extracted as their high-pressure version."
 }
