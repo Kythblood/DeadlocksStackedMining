@@ -1,7 +1,8 @@
-data:extend({
-	{
-		type = "technology",
-		name = "stacked-mining-tech",
+data:extend(
+{
+    {
+	    type = "technology",
+	    name = "stacked-mining-tech",
 		prerequisites =
 		{
 			"mining-productivity-1",
@@ -21,6 +22,6 @@ data:extend({
 		},
 		order = "c-k-f-a",
 		icon_size = 128,
-		effects = {},
-		}
+		effects = {}
+	}
 })

@@ -15,10 +15,10 @@ data:extend(
         selection_mode = { "any-entity" },
         selection_cursor_box_type = "entity",
         entity_type_filters = { "resource" },
-        entity_filter_mode = "whitelist",
+        --entity_filter_mode = "whitelist",
 		alt_selection_mode = { "any-entity" },
         alt_selection_cursor_box_type = "entity",
         alt_entity_type_filters = { "resource" },
-        alt_entity_filter_mode = "whitelist"
+        --alt_entity_filter_mode = "whitelist"
 	}
 })

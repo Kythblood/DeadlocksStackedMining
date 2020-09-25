@@ -1,4 +1,25 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.16
+Date: 25.09.2020
+  Changes:
+    - Cursed Filter Mining Drill is now compatible
+        - Fixed from the mod author from his end
+    - Minor non game-changing changes
+---------------------------------------------------------------------------------------------------
+Version: 0.1.15
+Date: 24.09.2020
+  Changes:
+    - Added a entity and item description for the High pressure offshore pump in the locale
+  Bugfixes:
+    - Fixed a bug with the High pressure offshore pump (pointed out by Larandar)
+        - The fluid of the offshore pump was hardcoded but some mods change it to something else other than water
+    - The order of the High pressure offshore pump is now also softcoded
+    - Fixed that with AAI Industry the pipe connection of the High pressure offshore pump were displayed incorrectly
+    - Fixed a bug that the icon_size of the High pressure offshore pump was not set correctly when some other mod adjust
+      that value
+    - Fixed the issue that in some cases when a mod was changing the recipe of the offshore pump the recipe of the High
+      pressure offshore pump messed up
+---------------------------------------------------------------------------------------------------
 Version: 0.1.14
 Date: 23.09.2020
   Features:
